@@ -354,14 +354,16 @@ jobs:
     steps:
       - restore_cache:
           key: base-assets-{{ .Revision }}
-      - deploy:
-          name: Deploy base
-          command: |
-            docker load -i ~/docker/base.tar
-            if [ "${CIRCLE_BRANCH}" == "master" ]; then
-              docker login -u $IMTSC_USER -p $IMTSC_PASS imtsc-cont-reg.it.csiro.au
-              docker push imtsc-cont-reg.it.csiro.au/dockcross/base:latest
-            fi
+#      - deploy:
+#          name: Deploy base
+#          command: |
+#            docker load -i ~/docker/base.tar
+#            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+#              docker login -u $IMTSC_USER -p $IMTSC_PASS imtsc-cont-reg.it.csiro.au
+#              docker push imtsc-cont-reg.it.csiro.au/dockcross/base:latest
+#            fi
+      - store_artifacts:
+          path: ~/docker/base.tar            
 #      - restore_cache:
 #          key: android-arm-assets-{{ .Revision }}
 #      - deploy:
@@ -486,14 +488,16 @@ jobs:
 #            fi
       - restore_cache:
           key: manylinux-x64-assets-{{ .Revision }}
-      - deploy:
-          name: Deploy manylinux-x64
-          command: |
-            docker load -i ~/docker/manylinux-x64.tar
-            if [ "${CIRCLE_BRANCH}" == "master" ]; then
-              docker login -u $IMTSC_USER -p $IMTSC_PASS imtsc-cont-reg.it.csiro.au
-              docker push imtsc-cont-reg.it.csiro.au/dockcross/manylinux-x64:latest              
-            fi
+#      - deploy:
+#          name: Deploy manylinux-x64
+#          command: |
+#            docker load -i ~/docker/manylinux-x64.tar
+#            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+#              docker login -u $IMTSC_USER -p $IMTSC_PASS imtsc-cont-reg.it.csiro.au
+#              docker push imtsc-cont-reg.it.csiro.au/dockcross/manylinux-x64:latest              
+#            fi
+      - store_artifacts:
+          path: ~/docker/manylinux-x64.tar
 #      - restore_cache:
 #          key: manylinux-x86-assets-{{ .Revision }}
 #      - deploy:
@@ -534,8 +538,6 @@ jobs:
 #              docker login -u $DOCKER_USER -p $DOCKER_PASS
 #              docker push dockcross/windows-x86:latest
 #            fi
-      - store_artifacts:
-          path: ~/docker
 
 workflows:
     version: 2
@@ -611,7 +613,7 @@ workflows:
               #- linux-ppc64le
 #              - linux-x64
 #              - linux-x86
-#              - manylinux-x64
+              - manylinux-x64
 #              - manylinux-x86
 #              - windows-x64
 #              - windows-x64-posix
