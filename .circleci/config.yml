@@ -359,79 +359,79 @@ jobs:
           command: |
             docker load -i ~/docker/base.tar
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
-              docker login -u $DOCKER_USER -p $DOCKER_PASS
-              docker push dockcross/base:latest
+              docker login imtsc-cont-reg.it.csiro.au
+              docker push imtsc-cont-reg.it.csiro.au/dockcross/base:latest
             fi
-      - restore_cache:
-          key: android-arm-assets-{{ .Revision }}
-      - deploy:
-          name: Deploy android-arm
-          command: |
-            docker load -i ~/docker/android-arm.tar
-            if [ "${CIRCLE_BRANCH}" == "master" ]; then
-              docker login -u $DOCKER_USER -p $DOCKER_PASS
-              docker push dockcross/android-arm:latest
-            fi
-      - restore_cache:
-          key: android-arm64-assets-{{ .Revision }}
-      - deploy:
-          name: Deploy android-arm64
-          command: |
-            docker load -i ~/docker/android-arm64.tar
-            if [ "${CIRCLE_BRANCH}" == "master" ]; then
-              docker login -u $DOCKER_USER -p $DOCKER_PASS
-              docker push dockcross/android-arm64:latest
-            fi
-      - restore_cache:
-          key: browser-asmjs-assets-{{ .Revision }}
-      - deploy:
-          name: Deploy browser-asmjs
-          command: |
-            docker load -i ~/docker/browser-asmjs.tar
-            if [ "${CIRCLE_BRANCH}" == "master" ]; then
-              docker login -u $DOCKER_USER -p $DOCKER_PASS
-              docker push dockcross/browser-asmjs:latest
-            fi
-      - restore_cache:
-          key: linux-arm64-assets-{{ .Revision }}
-      - deploy:
-          name: Deploy linux-arm64
-          command: |
-            docker load -i ~/docker/linux-arm64.tar
-            if [ "${CIRCLE_BRANCH}" == "master" ]; then
-              docker login -u $DOCKER_USER -p $DOCKER_PASS
-              docker push dockcross/linux-arm64:latest
-            fi
-      - restore_cache:
-          key: linux-armv5-assets-{{ .Revision }}
-      - deploy:
-          name: Deploy linux-armv5
-          command: |
-            docker load -i ~/docker/linux-armv5.tar
-            if [ "${CIRCLE_BRANCH}" == "master" ]; then
-              docker login -u $DOCKER_USER -p $DOCKER_PASS
-              docker push dockcross/linux-armv5:latest
-            fi
-      - restore_cache:
-          key: linux-armv6-assets-{{ .Revision }}
-      - deploy:
-          name: Deploy linux-armv6
-          command: |
-            docker load -i ~/docker/linux-armv6.tar
-            if [ "${CIRCLE_BRANCH}" == "master" ]; then
-              docker login -u $DOCKER_USER -p $DOCKER_PASS
-              docker push dockcross/linux-armv6:latest
-            fi
-      - restore_cache:
-          key: linux-armv7-assets-{{ .Revision }}
-      - deploy:
-          name: Deploy linux-armv7
-          command: |
-            docker load -i ~/docker/linux-armv7.tar
-            if [ "${CIRCLE_BRANCH}" == "master" ]; then
-              docker login -u $DOCKER_USER -p $DOCKER_PASS
-              docker push dockcross/linux-armv7:latest
-            fi
+#      - restore_cache:
+#          key: android-arm-assets-{{ .Revision }}
+#      - deploy:
+#          name: Deploy android-arm
+#          command: |
+#            docker load -i ~/docker/android-arm.tar
+#            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+#              docker login -u $DOCKER_USER -p $DOCKER_PASS
+#              docker push dockcross/android-arm:latest
+#            fi
+#      - restore_cache:
+#          key: android-arm64-assets-{{ .Revision }}
+#      - deploy:
+#          name: Deploy android-arm64
+#          command: |
+#            docker load -i ~/docker/android-arm64.tar
+#            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+#              docker login -u $DOCKER_USER -p $DOCKER_PASS
+#              docker push dockcross/android-arm64:latest
+#            fi
+#      - restore_cache:
+#          key: browser-asmjs-assets-{{ .Revision }}
+#      - deploy:
+#          name: Deploy browser-asmjs
+#          command: |
+#            docker load -i ~/docker/browser-asmjs.tar
+#            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+#              docker login -u $DOCKER_USER -p $DOCKER_PASS
+#              docker push dockcross/browser-asmjs:latest
+#            fi
+#      - restore_cache:
+#          key: linux-arm64-assets-{{ .Revision }}
+#      - deploy:
+#          name: Deploy linux-arm64
+#          command: |
+#            docker load -i ~/docker/linux-arm64.tar
+#            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+#              docker login -u $DOCKER_USER -p $DOCKER_PASS
+#              docker push dockcross/linux-arm64:latest
+#            fi
+#      - restore_cache:
+#          key: linux-armv5-assets-{{ .Revision }}
+#      - deploy:
+#          name: Deploy linux-armv5
+#          command: |
+#            docker load -i ~/docker/linux-armv5.tar
+#            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+#              docker login -u $DOCKER_USER -p $DOCKER_PASS
+#              docker push dockcross/linux-armv5:latest
+#            fi
+#      - restore_cache:
+#          key: linux-armv6-assets-{{ .Revision }}
+#      - deploy:
+#          name: Deploy linux-armv6
+#          command: |
+#            docker load -i ~/docker/linux-armv6.tar
+#            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+#              docker login -u $DOCKER_USER -p $DOCKER_PASS
+#              docker push dockcross/linux-armv6:latest
+#            fi
+#      - restore_cache:
+#          key: linux-armv7-assets-{{ .Revision }}
+#      - deploy:
+#          name: Deploy linux-armv7
+#          command: |
+#            docker load -i ~/docker/linux-armv7.tar
+#            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+#              docker login -u $DOCKER_USER -p $DOCKER_PASS
+#              docker push dockcross/linux-armv7:latest
+#            fi
       # Image build currently broken. See #209
       #- restore_cache:
           #key: linux-mipsel-assets-{{ .Revision }}
@@ -443,16 +443,16 @@ jobs:
               #docker login -u $DOCKER_USER -p $DOCKER_PASS
               #docker push dockcross/linux-mipsel:latest
             #fi
-      - restore_cache:
-          key: linux-s390x-assets-{{ .Revision }}
-      - deploy:
-          name: Deploy linux-s390x
-          command: |
-            docker load -i ~/docker/linux-s390x.tar
-            if [ "${CIRCLE_BRANCH}" == "master" ]; then
-              docker login -u $DOCKER_USER -p $DOCKER_PASS
-              docker push dockcross/linux-s390x:latest
-            fi
+#      - restore_cache:
+#          key: linux-s390x-assets-{{ .Revision }}
+#      - deploy:
+#          name: Deploy linux-s390x
+#          command: |
+#            docker load -i ~/docker/linux-s390x.tar
+#            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+#              docker login -u $DOCKER_USER -p $DOCKER_PASS
+#              docker push dockcross/linux-s390x:latest
+#            fi
       # Image build currently broken. See #209
       #- restore_cache:
           #key: linux-ppc64le-assets-{{ .Revision }}
@@ -464,26 +464,26 @@ jobs:
               #docker login -u $DOCKER_USER -p $DOCKER_PASS
               #docker push dockcross/linux-ppc64le:latest
             #fi
-      - restore_cache:
-          key: linux-x64-assets-{{ .Revision }}
-      - deploy:
-          name: Deploy linux-x64
-          command: |
-            docker load -i ~/docker/linux-x64.tar
-            if [ "${CIRCLE_BRANCH}" == "master" ]; then
-              docker login -u $DOCKER_USER -p $DOCKER_PASS
-              docker push dockcross/linux-x64:latest
-            fi
-      - restore_cache:
-          key: linux-x86-assets-{{ .Revision }}
-      - deploy:
-          name: Deploy linux-x86
-          command: |
-            docker load -i ~/docker/linux-x86.tar
-            if [ "${CIRCLE_BRANCH}" == "master" ]; then
-              docker login -u $DOCKER_USER -p $DOCKER_PASS
-              docker push dockcross/linux-x86:latest
-            fi
+#      - restore_cache:
+#          key: linux-x64-assets-{{ .Revision }}
+#      - deploy:
+#          name: Deploy linux-x64
+#          command: |
+#            docker load -i ~/docker/linux-x64.tar
+#            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+#              docker login -u $DOCKER_USER -p $DOCKER_PASS
+#              docker push dockcross/linux-x64:latest
+#            fi
+#      - restore_cache:
+#          key: linux-x86-assets-{{ .Revision }}
+#      - deploy:
+#          name: Deploy linux-x86
+#          command: |
+#            docker load -i ~/docker/linux-x86.tar
+#            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+#              docker login -u $DOCKER_USER -p $DOCKER_PASS
+#              docker push dockcross/linux-x86:latest
+#            fi
       - restore_cache:
           key: manylinux-x64-assets-{{ .Revision }}
       - deploy:
@@ -491,49 +491,51 @@ jobs:
           command: |
             docker load -i ~/docker/manylinux-x64.tar
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
-              docker login -u $DOCKER_USER -p $DOCKER_PASS
-              docker push dockcross/manylinux-x64:latest
+              docker login imtsc-cont-reg.it.csiro.au
+              docker push imtsc-cont-reg.it.csiro.au/dockcross/manylinux-x64:latest              
             fi
-      - restore_cache:
-          key: manylinux-x86-assets-{{ .Revision }}
-      - deploy:
-          name: Deploy manylinux-x86
-          command: |
-            docker load -i ~/docker/manylinux-x86.tar
-            if [ "${CIRCLE_BRANCH}" == "master" ]; then
-              docker login -u $DOCKER_USER -p $DOCKER_PASS
-              docker push dockcross/manylinux-x86:latest
-            fi
-      - restore_cache:
-          key: windows-x64-assets-{{ .Revision }}
-      - deploy:
-          name: Deploy windows-x64
-          command: |
-            docker load -i ~/docker/windows-x64.tar
-            if [ "${CIRCLE_BRANCH}" == "master" ]; then
-              docker login -u $DOCKER_USER -p $DOCKER_PASS
-              docker push dockcross/windows-x64:latest
-            fi
-      - restore_cache:
-          key: windows-x64-posix-assets-{{ .Revision }}
-      - deploy:
-          name: Deploy windows-x64-posix
-          command: |
-            docker load -i ~/docker/windows-x64-posix.tar
-            if [ "${CIRCLE_BRANCH}" == "master" ]; then
-              docker login -u $DOCKER_USER -p $DOCKER_PASS
-              docker push dockcross/windows-x64-posix:latest
-            fi
-      - restore_cache:
-          key: windows-x86-assets-{{ .Revision }}
-      - deploy:
-          name: Deploy windows-x86
-          command: |
-            docker load -i ~/docker/windows-x86.tar
-            if [ "${CIRCLE_BRANCH}" == "master" ]; then
-              docker login -u $DOCKER_USER -p $DOCKER_PASS
-              docker push dockcross/windows-x86:latest
-            fi
+#      - restore_cache:
+#          key: manylinux-x86-assets-{{ .Revision }}
+#      - deploy:
+#          name: Deploy manylinux-x86
+#          command: |
+#            docker load -i ~/docker/manylinux-x86.tar
+#            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+#              docker login -u $DOCKER_USER -p $DOCKER_PASS
+#              docker push dockcross/manylinux-x86:latest
+#            fi
+#      - restore_cache:
+#          key: windows-x64-assets-{{ .Revision }}
+#      - deploy:
+#          name: Deploy windows-x64
+#          command: |
+#            docker load -i ~/docker/windows-x64.tar
+#            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+#              docker login -u $DOCKER_USER -p $DOCKER_PASS
+#              docker push dockcross/windows-x64:latest
+#            fi
+#      - restore_cache:
+#          key: windows-x64-posix-assets-{{ .Revision }}
+#      - deploy:
+#          name: Deploy windows-x64-posix
+#          command: |
+#            docker load -i ~/docker/windows-x64-posix.tar
+#            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+#              docker login -u $DOCKER_USER -p $DOCKER_PASS
+#              docker push dockcross/windows-x64-posix:latest
+#            fi
+#      - restore_cache:
+#          key: windows-x86-assets-{{ .Revision }}
+#      - deploy:
+#          name: Deploy windows-x86
+#          command: |
+#            docker load -i ~/docker/windows-x86.tar
+#            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+#              docker login -u $DOCKER_USER -p $DOCKER_PASS
+#              docker push dockcross/windows-x86:latest
+#            fi
+#       - store_artifacts:
+#          path: ~/docker
 
 workflows:
     version: 2
@@ -578,9 +580,9 @@ workflows:
 #        - linux-x86:
 #            requires:
 #              - base
-#        - manylinux-x64:
-#            requires:
-#              - base
+        - manylinux-x64:
+            requires:
+              - base
 #        - manylinux-x86:
 #            requires:
 #              - base
@@ -593,9 +595,9 @@ workflows:
 #        - windows-x86:
 #            requires:
 #              - base
-#        - deploy:
-#            requires:
-#              - base
+        - deploy:
+            requires:
+              - base
 #              - android-arm
 #              - android-arm64
 #              - browser-asmjs
