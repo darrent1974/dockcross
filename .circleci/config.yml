@@ -537,80 +537,83 @@ jobs:
 
 workflows:
     version: 2
+    test:
+      jobs:
+        -base
     build-test-deploy:
       jobs:
         - base
-        - android-arm:
-            requires:
-              - base
-        - android-arm64:
-            requires:
-              - base
-        - browser-asmjs:
-            requires:
-              - base
-        - linux-arm64:
-            requires:
-              - base
-        - linux-armv5:
-            requires:
-              - base
-        - linux-armv6:
-            requires:
-              - base
-        - linux-armv7:
-            requires:
-              - base
+#        - android-arm:
+#            requires:
+#              - base
+#        - android-arm64:
+#            requires:
+#              - base
+#        - browser-asmjs:
+#            requires:
+#              - base
+#        - linux-arm64:
+#            requires:
+#              - base
+#        - linux-armv5:
+#            requires:
+#              - base
+#        - linux-armv6:
+#            requires:
+#              - base
+#        - linux-armv7:
+#            requires:
+#              - base
         # Image build currently broken. See #209
         #- linux-mipsel:
             #requires:
               #- base
-        - linux-s390x:
-            requires:
-              - base
+#        - linux-s390x:
+#            requires:
+#              - base
         # Image build currently broken. See #209
         #- linux-ppc64le:
             #requires:
               #- base
-        - linux-x64:
-            requires:
-              - base
-        - linux-x86:
-            requires:
-              - base
-        - manylinux-x64:
-            requires:
-              - base
-        - manylinux-x86:
-            requires:
-              - base
-        - windows-x64:
-            requires:
-              - base
-        - windows-x64-posix:
-            requires:
-              - base
-        - windows-x86:
-            requires:
-              - base
-        - deploy:
-            requires:
-              - base
-              - android-arm
-              - android-arm64
-              - browser-asmjs
-              - linux-arm64
-              - linux-armv5
-              - linux-armv6
-              - linux-armv7
+#        - linux-x64:
+#            requires:
+#              - base
+#        - linux-x86:
+#            requires:
+#              - base
+#        - manylinux-x64:
+#            requires:
+#              - base
+#        - manylinux-x86:
+#            requires:
+#              - base
+#        - windows-x64:
+#            requires:
+#              - base
+#        - windows-x64-posix:
+#            requires:
+#              - base
+#        - windows-x86:
+#            requires:
+#              - base
+#        - deploy:
+#            requires:
+#              - base
+#              - android-arm
+#              - android-arm64
+#              - browser-asmjs
+#              - linux-arm64
+#              - linux-armv5
+#              - linux-armv6
+#              - linux-armv7
               #- linux-mipsel
-              - linux-s390x
+#              - linux-s390x
               # Image build currently broken. See #209
               #- linux-ppc64le
-              - linux-x64
-              - linux-x86
-              - manylinux-x64
-              - manylinux-x86
-              - windows-x64
-              - windows-x64-posix
-              - windows-x86
+#              - linux-x64
+#              - linux-x86
+#              - manylinux-x64
+#              - manylinux-x86
+#              - windows-x64
+#              - windows-x64-posix
+#              - windows-x86
