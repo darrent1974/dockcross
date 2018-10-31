@@ -534,8 +534,8 @@ jobs:
 #              docker login -u $DOCKER_USER -p $DOCKER_PASS
 #              docker push dockcross/windows-x86:latest
 #            fi
-#       - store_artifacts:
-#          path: ~/docker
+      - store_artifacts:
+        path: ~/docker
 
 workflows:
     version: 2
