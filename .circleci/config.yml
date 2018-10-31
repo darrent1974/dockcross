@@ -535,7 +535,7 @@ jobs:
 #              docker push dockcross/windows-x86:latest
 #            fi
       - store_artifacts:
-        path: ~/docker
+          path: ~/docker
 
 workflows:
     version: 2
