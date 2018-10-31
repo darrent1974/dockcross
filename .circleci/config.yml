@@ -359,11 +359,12 @@ jobs:
           command: |
             docker load -i ~/docker/base.tar
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
-              docker login -u $IMTSC_USER -p $IMTSC_PASS docker-registry.it.csiro.au
+              echo $IMTSC_PASS | docker login -u $IMTSC_USER --password-stdin docker-registry.it.csiro.au
+              docker tag dockcross/base docker-registry.it.csiro.au/dockcross/base
               docker push docker-registry.it.csiro.au/dockcross/base:latest
             fi
-#      - store_artifacts:
-#          path: ~/docker/base.tar            
+      - store_artifacts:
+          path: ~/docker/base.tar            
 #      - restore_cache:
 #          key: android-arm-assets-{{ .Revision }}
 #      - deploy:
@@ -493,11 +494,12 @@ jobs:
           command: |
             docker load -i ~/docker/manylinux-x64.tar
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
-              docker login -u $IMTSC_USER -p $IMTSC_PASS docker-registry.it.csiro.au
+              echo $IMTSC_PASS | docker login -u $IMTSC_USER --password-stdin docker-registry.it.csiro.au
+              docker tag dockcross/manylinux-x64 docker-registry.it.csiro.au/dockcross/manylinux-x64
               docker push docker-registry.it.csiro.au/dockcross/manylinux-x64:latest              
             fi
-#      - store_artifacts:
-#          path: ~/docker/manylinux-x64.tar
+      - store_artifacts:
+          path: ~/docker/manylinux-x64.tar
 #      - restore_cache:
 #          key: manylinux-x86-assets-{{ .Revision }}
 #      - deploy:
