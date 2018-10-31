@@ -359,7 +359,7 @@ jobs:
           command: |
             docker load -i ~/docker/base.tar
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
-              docker login imtsc-cont-reg.it.csiro.au
+              docker login -u $IMTSC_USER -p $IMTSC_PASS imtsc-cont-reg.it.csiro.au
               docker push imtsc-cont-reg.it.csiro.au/dockcross/base:latest
             fi
 #      - restore_cache:
@@ -491,7 +491,7 @@ jobs:
           command: |
             docker load -i ~/docker/manylinux-x64.tar
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
-              docker login imtsc-cont-reg.it.csiro.au
+              docker login -u $IMTSC_USER -p $IMTSC_PASS imtsc-cont-reg.it.csiro.au
               docker push imtsc-cont-reg.it.csiro.au/dockcross/manylinux-x64:latest              
             fi
 #      - restore_cache:
