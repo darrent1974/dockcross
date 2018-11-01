@@ -18,9 +18,9 @@ else if [[ "${CUDA_VERSION}" == "8.0" ]]; then
 	echo "Downloading $url"
 	curl -# -LO $url	
 	
-	sudo rpm -i cuda-repo-rhel6-8-0-local-ga2-8.0.61-1.x86_64.rpm
-	sudo yum clean all
-	sudo yum install cuda
+	rpm -i cuda-repo-rhel6-8-0-local-ga2-8.0.61-1.x86_64.rpm
+	yum clean all
+	yum install cuda
 	export PATH=/usr/local/cuda-8.0/bin${PATH:+:${PATH}}	
 else
 	echo >&2 'error: Unsupported CUDA Version' ${CUDA_VERSION}
