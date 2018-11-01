@@ -21,7 +21,7 @@ COPY \
 
 RUN \
   X86_FLAG=$([ "$DEFAULT_DOCKCROSS_IMAGE" = "dockcross/manylinux-x86" ] && echo "-32" || echo "") && \
-  /buildscripts/install-cuda.sh \
+  /buildscripts/install-cuda.sh && \
   /buildscripts/build-and-install-openssl.sh $X86_FLAG && \
   /buildscripts/build-and-install-openssh.sh && \
   /buildscripts/build-and-install-curl.sh && \
