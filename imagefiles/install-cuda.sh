@@ -14,6 +14,8 @@ if [[ "${CUDA_VERSION}" == "" ]]; then
 else if [[ "${CUDA_VERSION}" == "8.0" ]]; then 
 	echo >&2 'installing ' ${CUDA_VERSION}
 	
+	cd /tmp	
+	
 	url=https://developer.nvidia.com/compute/cuda/8.0/Prod2/local_installers/cuda-repo-rhel6-8-0-local-ga2-8.0.61-1.x86_64-rpm
 	echo "Downloading $url"
 	curl -# -LO $url	

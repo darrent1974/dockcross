@@ -21,11 +21,11 @@ COPY \
 
 RUN \
   X86_FLAG=$([ "$DEFAULT_DOCKCROSS_IMAGE" = "dockcross/manylinux-x86" ] && echo "-32" || echo "") && \
-  /buildscripts/install-cuda.sh && \
   /buildscripts/build-and-install-openssl.sh $X86_FLAG && \
   /buildscripts/build-and-install-openssh.sh && \
   /buildscripts/build-and-install-curl.sh && \
   /buildscripts/build-and-install-git.sh && \
+  /buildscripts/install-cuda.sh && \  
   /buildscripts/install-cmake-binary.sh $X86_FLAG && \
   /buildscripts/install-liquidprompt-binary.sh && \
   PYTHON=$([ -e /opt/python/cp35-cp35m/bin/python ] && echo "/opt/python/cp35-cp35m/bin/python" || echo "python") && \
