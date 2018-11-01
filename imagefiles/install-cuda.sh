@@ -3,6 +3,8 @@
 set -ex
 set -o pipefail
 
+echo "IN INSTALL-CUDA.SH"
+
 if ! command -v curl &> /dev/null; then
 	echo >&2 'error: "curl" not found!'
 	exit 1
@@ -12,7 +14,7 @@ if [[ "${CUDA_VERSION}" == "" ]]; then
   echo >&2 'error: CUDA_VERSION env. variable must be set to a non-empty value'
   exit 1
 else if [[ "${CUDA_VERSION}" == "8.0" ]]; then 
-	echo >&2 'installing ' ${CUDA_VERSION}
+	echo "installing ${CUDA_VERSION}"
 	
 	cd /tmp	
 	
