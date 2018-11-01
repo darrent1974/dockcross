@@ -3,29 +3,23 @@
 set -ex
 set -o pipefail
 
-echo "IN INSTALL-CUDA.SH"
-
-if ! command -v curl &> /dev/null; then
-	echo >&2 'error: "curl" not found!'
-	exit 1
-fi
+cd /tmp	
 
 if [[ "${CUDA_VERSION}" == "" ]]; then
   echo >&2 'error: CUDA_VERSION env. variable must be set to a non-empty value'
   exit 1
-else if [[ "${CUDA_VERSION}" == "8.0" ]]; then 
+elif [[ "${CUDA_VERSION}" == "8.0" ]]; then 
 	echo "installing ${CUDA_VERSION}"
 	
-	cd /tmp	
+	url=https://developer.nvidia.com/compute/cuda/8.0/Prod2/local_installers/cuda_8.0.61_375.26_linux-run
 	
-	url=https://developer.nvidia.com/compute/cuda/8.0/Prod2/local_installers/cuda-repo-rhel6-8-0-local-ga2-8.0.61-1.x86_64-rpm
 	echo "Downloading $url"
-	curl -# -LO $url	
+	wget -q $url	
 	
-	rpm -i cuda-repo-rhel6-8-0-local-ga2-8.0.61-1.x86_64.rpm
-	yum clean all
-	yum install cuda
+	sh cuda_8.0.61_375.26_linux-run --silent --toolkit --verbose
+
 	export PATH=/usr/local/cuda-8.0/bin${PATH:+:${PATH}}	
+	export LD_LIBRARY_PATH=/usr/local/cuda-8.0/lib64 ${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
 else
 	echo >&2 'error: Unsupported CUDA Version' ${CUDA_VERSION}
   	exit 1	
