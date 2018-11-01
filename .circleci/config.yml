@@ -354,15 +354,15 @@ jobs:
     steps:
       - restore_cache:
           key: base-assets-{{ .Revision }}
-      - deploy:
-          name: Deploy base
-          command: |
-            docker load -i ~/docker/base.tar
-            if [ "${CIRCLE_BRANCH}" == "master" ]; then
-              echo $IMTSC_PASS | docker login -u $IMTSC_USER --password-stdin docker-registry.it.csiro.au
-              docker tag dockcross/base docker-registry.it.csiro.au/dockcross/base
-              docker push docker-registry.it.csiro.au/dockcross/base:latest
-            fi
+#      - deploy:
+#          name: Deploy base
+#          command: |
+#            docker load -i ~/docker/base.tar
+#            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+#              echo $IMTSC_PASS | docker login -u $IMTSC_USER --password-stdin docker-registry.it.csiro.au
+#              docker tag dockcross/base docker-registry.it.csiro.au/dockcross/base
+#              docker push docker-registry.it.csiro.au/dockcross/base:latest
+#            fi
       - store_artifacts:
           path: ~/docker/base.tar            
 #      - restore_cache:
@@ -489,15 +489,15 @@ jobs:
 #            fi
       - restore_cache:
           key: manylinux-x64-assets-{{ .Revision }}
-      - deploy:
-          name: Deploy manylinux-x64
-          command: |
-            docker load -i ~/docker/manylinux-x64.tar
-            if [ "${CIRCLE_BRANCH}" == "master" ]; then
-              echo $IMTSC_PASS | docker login -u $IMTSC_USER --password-stdin docker-registry.it.csiro.au
-              docker tag dockcross/manylinux-x64 docker-registry.it.csiro.au/dockcross/manylinux-x64
-              docker push docker-registry.it.csiro.au/dockcross/manylinux-x64:latest              
-            fi
+#      - deploy:
+#          name: Deploy manylinux-x64
+#          command: |
+#            docker load -i ~/docker/manylinux-x64.tar
+#            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+#              echo $IMTSC_PASS | docker login -u $IMTSC_USER --password-stdin docker-registry.it.csiro.au
+#              docker tag dockcross/manylinux-x64 docker-registry.it.csiro.au/dockcross/manylinux-x64
+#              docker push docker-registry.it.csiro.au/dockcross/manylinux-x64:latest              
+#            fi
       - store_artifacts:
           path: ~/docker/manylinux-x64.tar
 #      - restore_cache:
